@@ -25,11 +25,11 @@ public class Events implements Serializable{
     private String event_description;
     private Date date;
 
-    /* 
+    
     @ManyToOne
     private Hotels id_hotel;
 
     @ManyToMany
     private Users id_user;
-    */
+    
 }
