@@ -29,4 +29,7 @@ public class Rooms implements Serializable {
 
     @ManyToOne
     private Hotels id_Hotel;
+
+    @ManyToOne
+    private Reservations id_reservations;
 }
