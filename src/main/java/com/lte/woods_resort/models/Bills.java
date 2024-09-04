@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -34,11 +36,13 @@ public class Bills {
     @Column(name = "issue_date")
     private Date issueDate;
 
+    @OneToMany
     @Column(name = "id_payment")
-    private Long idPayment;
-
+    private Payments idPayment;
+    
+    @OneToOne
     @Column(name = "id_user")
-    private Long idUser;
+    private Users idUser;
 
 
 
