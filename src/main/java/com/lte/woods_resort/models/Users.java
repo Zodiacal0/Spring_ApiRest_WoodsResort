@@ -17,19 +17,24 @@ import lombok.NoArgsConstructor;
 public class Users  implements Serializable{
     @Id
     @Column(name="id_user")
-        private String id_user;
+        private String iduser;
 
     @Email(messag="Please enter an Email")
     @column(unique = true, name="email")
-        private String email;
+    private String email;
 
     @Column(unique = true)
-        private String username; 
+    private String userName; 
         
-        private String name;
-        private String lastname;
-        private String phone;
-        private TypeOfUsers typeUsers;
+    private String name;
+    
+    @Column(name="last_name")
+    private String lastName;
+
+    private String phone;
+
+    @Column(name="user_type")
+    private TypeOfUsers typeUsers;
 
 
 
