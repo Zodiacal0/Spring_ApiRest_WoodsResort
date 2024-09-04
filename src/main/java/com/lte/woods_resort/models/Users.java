@@ -1,6 +1,7 @@
 package com.lte.woods_resort.models;
-
 import java.io.Serializable;
+
+import com.lte.woods_resort.utils.TypeOfUsers;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,8 +20,8 @@ public class Users  implements Serializable{
     @Column(name="id_user")
         private String iduser;
 
-    @Email(messag="Please enter an Email")
-    @column(unique = true, name="email")
+    @Email(message ="Please enter an Email")
+    @Column(unique = true)
     private String email;
 
     @Column(unique = true)
