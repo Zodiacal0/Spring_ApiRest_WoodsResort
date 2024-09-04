@@ -6,6 +6,8 @@ import java.sql.Date;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -19,15 +21,12 @@ public class Payments implements Serializable{
     private  int  amount;
     private Date  paymentDate;
 
-    //@ManyToOne
-    //@OneToMany
-    //private Reservation Reservation;
+    @OneToOne
+    private Reservations Reservation;
 
-    //@ManyToOne
-    //@OneToMany
-    //private User User;
+    @ManyToOne
+    private Users User;
 
-    //@ManyToOne
-    //@OneToMany
-    //private Payment_Method Payment_Method;
+    @OneToOne
+    private Payment_Methods Payment_Method;
 }
