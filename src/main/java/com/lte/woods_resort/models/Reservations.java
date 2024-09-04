@@ -8,6 +8,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -34,11 +36,13 @@ public class Reservations implements Serializable {
 
     @Column(name = "end_date")
     private Date endDate;
-
-    @Column(name = "id_user")
-    private Long idUser;
     
+    @ManyToOne
+    @Column(name = "id_user")
+    private Users idUser;
+
+    @OneToMany
     @Column(name = "id_rooms")
-    private Long idRooms;
+    private Rooms idRooms;
     
 }
