@@ -1,6 +1,5 @@
 package com.lte.woods_resort.models;
 
-import java.io.Serializable;
 import java.sql.Date;
 
 import jakarta.persistence.Column;
@@ -18,27 +17,30 @@ import lombok.Data;
 @Data
 
 // Nombre de la tabla 
-@Table(name = "reservations")
+@Table(name = "Bills")
 
 // Genera automáticamente un método toString() que incluye todos los campos de la clase
 
-public class Reservations implements Serializable {
-
+public class Bills {
+    
     @Id
-    @Column(name = "id_reservation")
+    @Column(name = "id_invoice")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long idReservation;
+    private Long idInvoice;
 
-    @Column(name = "star_date")
-    private Date starDate;
+    @Column(name = "numero_factura")
+    private Long numeroFactura;
 
-    @Column(name = "end_date")
-    private Date endDate;
+    @Column(name = "issue_date")
+    private Date issueDate;
+
+    @Column(name = "id_payment")
+    private Long idPayment;
 
     @Column(name = "id_user")
     private Long idUser;
-    
-    @Column(name = "id_rooms")
-    private Long idRooms;
-    
+
+
+
+
 }
