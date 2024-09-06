@@ -5,11 +5,11 @@ import java.util.List;
 import com.lte.woods_resort.models.Users;
 
 public interface IUserService {
-    public List<Users> listarTareas();
+    public List<Users> listUsers();
 
-    public Users buscarTareaPorId(Integer iduser);
+    public Users chooUsers(String iduser);
 
-    public void guardarTarea(Users users);
+    public void saveUsers(Users users);
 
-    public void eliminarTarea(Users users);
+    public void deleteUsers(Users users);
 }
