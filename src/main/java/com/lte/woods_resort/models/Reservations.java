@@ -30,6 +30,8 @@ public class Reservations implements Serializable {
     @Column(name = "end_date")
     private Date endDate;
     
+
+    
     @ManyToOne
     private Users idUser;
 
