@@ -39,7 +39,7 @@ public class Users  implements Serializable{
     @Column(name="user_type")
     private TypeOfUsers typeUsers;
 
-    @OneToMany(mappedBy = "user") 
+    @OneToMany(mappedBy = "id_event") 
     private List<Events> events;
 
 }
