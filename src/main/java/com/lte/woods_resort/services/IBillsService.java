@@ -7,4 +7,6 @@ public interface IBillsService {
     public Bills findBills(Long idInvoice);
     
     public Bills addBills(Bills bills);
+
+    
 }

@@ -11,5 +11,4 @@ public class BillsExceptions extends RuntimeException {
         super(mesagge);
 
     }
-
 }
