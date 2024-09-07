@@ -24,9 +24,10 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public void saveUsers(Users users) {
-        userRepository.save(users);
+    public Users saveUsers(Users users) {
+        return userRepository.save(users);
     }
+
 
     @Override
     public void deleteUsers(Users users) {
@@ -34,5 +35,4 @@ public class UserService implements IUserService{
     }
 
     
-
 }
