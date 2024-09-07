@@ -25,7 +25,7 @@ public class BillsController {
     @Autowired
     private IBillsService ibBillsService;
 
-    @GetMapping("/bills/{id}")
+    @GetMapping("/search-bills/{id}")
     public ResponseEntity<Bills> findBills(@PathVariable Long idInvoice) {
         Bills bills = ibBillsService.findBills(idInvoice);
         if (bills == null) {

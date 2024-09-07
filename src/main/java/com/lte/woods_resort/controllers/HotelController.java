@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.lte.woods_resort.exceptions.HotelsExceptions;
 import com.lte.woods_resort.models.Hotels;
-import com.lte.woods_resort.models.Reservations;
 import com.lte.woods_resort.services.HotelsService;
 
 @RestController
