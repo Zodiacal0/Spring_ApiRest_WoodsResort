@@ -24,4 +24,8 @@ public class Payment_Methods implements Serializable{
     @Column(name = "type_of_payment_methods")
     private TypeOfPaymentMethods typeOfPaymentMethods;
 
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> bc2968d066ebfe2765cc7f40a230873241564363
