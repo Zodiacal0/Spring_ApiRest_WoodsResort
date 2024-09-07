@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.lte.woods_resort.models.Events;
-import com.lte.woods_resort.repositories.EventsRepository;
+import com.lte.woods_resort.repository.EventsRepository;
 
 public class EventsService implements IEventsService {
 
