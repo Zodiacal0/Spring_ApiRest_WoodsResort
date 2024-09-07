@@ -9,17 +9,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
-
+@Data
 @Table (name="Payments")
 public class Payments implements Serializable{
     @Id
     @Column(name="idPago")
+    private Long id_Pago;
     
-    private Long  id_Pago;
-    private  int  amount;
-    private Date  paymentDate;
+    private int amount;
+    private Date paymentDate;
 
     @OneToOne
     private Reservations Reservation;

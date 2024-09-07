@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -25,11 +26,13 @@ public class Events implements Serializable{
     private String event_description;
     private Date date;
 
-    /* 
+    
     @ManyToOne
-    private Hotels id_hotel;
+    @JoinColumn(name = "id_Hotel")
+    private Hotels hotel;
 
-    @ManyToMany
-    private Users id_user;
-    */
+    @ManyToOne
+    @JoinColumn (name = "iduser")
+    private Users user;
+    
 }
