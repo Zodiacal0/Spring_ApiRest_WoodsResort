@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lte.woods_resort.models.Reservations;
-import com.lte.woods_resort.repositories.ReservationsRepository;
+import com.lte.woods_resort.repository.ReservationsRepository;
 
 @Service
 

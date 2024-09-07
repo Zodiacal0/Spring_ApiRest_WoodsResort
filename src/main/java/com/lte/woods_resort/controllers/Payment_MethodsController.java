@@ -14,10 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.lte.woods_resort.exceptions.Payment_MethodsException;
 import com.lte.woods_resort.models.Payment_Methods;
 import com.lte.woods_resort.services.IPayment_MethodsService;
+@RestController
+@RequestMapping("wdr/v1/Payment_Methods")
 
 public class Payment_MethodsController {
     private static final Logger logger = LoggerFactory.getLogger(Payment_MethodsController.class);

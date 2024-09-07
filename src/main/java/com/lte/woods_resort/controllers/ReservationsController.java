@@ -21,9 +21,9 @@ import com.lte.woods_resort.exceptions.ReservationsExceptions;
 import com.lte.woods_resort.models.Reservations;
 import com.lte.woods_resort.services.IReservationsServices;
 
-@RestController //http://localhost:8080/lte-woods-resort
+@RestController //http://localhost:8080/wdr/v1/Reservations
 
-@RequestMapping("wdr-reservations")
+@RequestMapping("wdr/v1/Reservations")
 
 public class ReservationsController {
 
