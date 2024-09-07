@@ -9,7 +9,7 @@ public interface IPayment_MethodsService {
 
     public Payment_Methods choosePayment_Methods(String idPaymentMethods);
 
-    public void savePayment_Methods(Payment_Methods payment_Methods);
+    public Payment_Methods savePayment_Methods(Payment_Methods payment_Methods);
 
     public void deletePayment_Methods(Payment_Methods payment_Methods);
 }

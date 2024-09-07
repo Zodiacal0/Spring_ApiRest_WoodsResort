@@ -41,10 +41,10 @@ public class UserController implements Serializable {
     }
 
     @GetMapping("/choose-users/{id}")
-    public ResponseEntity<Users> buscarReporte(@PathVariable String iduser){
+    public ResponseEntity<Users> chooseUser(@PathVariable String iduser){
         Users users = iUserService.chooUsers(iduser);
         if(users == null)
-            throw new UserException("no se encontro el reporte");
+            throw new UserException("no se encontro el usuario");
         return ResponseEntity.ok(users);
     }
 
