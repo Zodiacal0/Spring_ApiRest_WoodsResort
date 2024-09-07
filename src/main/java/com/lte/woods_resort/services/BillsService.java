@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lte.woods_resort.models.Bills;
-import com.lte.woods_resort.repositories.BillsRepository;
+import com.lte.woods_resort.repository.BillsRepository;
 
 @Service
 public class BillsService implements IBillsService {

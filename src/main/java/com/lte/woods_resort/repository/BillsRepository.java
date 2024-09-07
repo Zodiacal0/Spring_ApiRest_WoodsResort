@@ -1,4 +1,4 @@
-package com.lte.woods_resort.repositories;
+package com.lte.woods_resort.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
