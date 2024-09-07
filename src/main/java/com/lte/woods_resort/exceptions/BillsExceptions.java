@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class BillsExceptions extends RuntimeException {
 
-    public BillsExceptions(String mesagge){
+    public BillsExceptions(String message){
 
-        super(mesagge);
+        super(message);
 
     }
 }
