@@ -28,8 +28,8 @@ public class Payment_MethodsServices implements IPayment_MethodsService {
     }
 
     @Override
-    public void savePayment_Methods(Payment_Methods payment_Methods) {
-        pmRepository.save(payment_Methods);
+    public  Payment_Methods savePayment_Methods(Payment_Methods payment_Methods) {
+        return pmRepository.save(payment_Methods);
     }
 
     @Override
