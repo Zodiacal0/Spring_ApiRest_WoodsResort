@@ -3,10 +3,12 @@ package com.lte.woods_resort.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lte.woods_resort.models.Events;
 import com.lte.woods_resort.repository.EventsRepository;
 
+@Service
 public class EventsService implements IEventsService {
 
     private Events events;

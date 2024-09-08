@@ -3,10 +3,12 @@ package com.lte.woods_resort.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.lte.woods_resort.models.Hotels;
 import com.lte.woods_resort.repository.HotelsRepository;
 
+@Service
 public class HotelsService implements IHotelsService {
 
     private Hotels hotels;
