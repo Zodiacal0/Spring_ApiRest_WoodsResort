@@ -16,7 +16,7 @@ import lombok.Data;
 public class Rooms implements Serializable {
     @Id
     @Column(name = "id_rooms")
-    private String idRooms;  // Usar el nombre de variable en CamelCase
+    private String idRooms;
 
     @Column(unique = true, name = "number")
     private int number;
@@ -31,9 +31,9 @@ public class Rooms implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_hotel", referencedColumnName = "id")  
-    private Hotels hotel;  
+    private Hotels hotel; 
 
     @ManyToOne
     @JoinColumn(name = "id_reservation", referencedColumnName = "id_reservation")
-    private Reservations reservation;  
+    private Reservations reservation;
 }
