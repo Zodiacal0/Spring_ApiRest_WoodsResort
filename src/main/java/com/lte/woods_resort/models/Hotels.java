@@ -23,7 +23,7 @@ public class Hotels implements  Serializable{
     @Id
     @Column(name="id")
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long idHotel;
+    private long id_Hotel;
     private String name;
     private String address;    
     private String services;
@@ -33,11 +33,7 @@ public class Hotels implements  Serializable{
     @Column(name ="star")
     private star star;
 
-    @OneToMany(mappedBy = "id_rooms")
+    @OneToMany
     private List<Rooms> rooms;
-
-    @OneToMany(mappedBy = "idReservation")
-    private List<Reservations> reservations;
-
 
 }

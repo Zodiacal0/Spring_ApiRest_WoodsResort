@@ -14,14 +14,13 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@Table(name = "payment_metods")
-public class Payment_Methods implements Serializable{
+@Table(name = "payment_methods") 
+public class Payment_Methods implements Serializable {
 
     @Id
-    @Column(name = "id_payment_methods", unique = true)
+    @Column(name = "id_payment_methods")
     private String idPaymentMethods;
 
     @Column(name = "type_of_payment_methods")
     private TypeOfPaymentMethods typeOfPaymentMethods;
-
 }
