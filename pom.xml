@@ -77,7 +77,7 @@
         <dependency>
             <groupId>com.cloudinary</groupId>
             <artifactId>cloudinary</artifactId>
-            <version>1.43.0</version>
+            <version>1.39s.0</version>
         </dependency>
     </dependencies>
     <build>
