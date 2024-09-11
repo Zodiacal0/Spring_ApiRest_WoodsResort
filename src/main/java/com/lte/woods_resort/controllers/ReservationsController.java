@@ -54,9 +54,7 @@ public class ReservationsController {
 
         reservations.setStarDate(reservationEdit.getStarDate());
         reservations.setEndDate(reservationEdit.getEndDate());
-        reservations.setIdRooms(reservationEdit.getIdRooms());
-        reservations.setIdUser(reservationEdit.getIdUser());
-        reservations.setId_Hotel(reservationEdit.getId_Hotel());
+        reservations.setId_user(reservationEdit.getId_user());
         iReservationsServices.saveReservation(reservations);
         return ResponseEntity.ok(reservations);
     }

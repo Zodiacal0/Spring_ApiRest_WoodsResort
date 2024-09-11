@@ -65,7 +65,7 @@ public class RoomsController {
         if(room == null){
             throw new RoomsException("this id not exist");
         }
-        if (iRoomsService.listRooms().stream().anyMatch(r -> r.getId_rooms() == roomsEdit.getId_rooms() && roomsEdit.getId_rooms() != id_rooms)) {
+        if (iRoomsService.listRooms().stream().anyMatch(r -> r.getIdRooms() == roomsEdit.getIdRooms() && roomsEdit.getIdRooms() != id_rooms)) {
             throw new RoomsException("this id alredy exist");
         }
 

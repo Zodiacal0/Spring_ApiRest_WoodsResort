@@ -28,7 +28,7 @@ public class RoomsService implements IRoomsService {
 
     @Override
     public Rooms saveRooms(Rooms rooms) {
-        if (roomsRespository.existsById(rooms.getId_rooms())) {
+        if (roomsRespository.existsById(rooms.getIdRooms())) {
             throw new RoomsException("this rooms already exist");
         }
         return roomsRespository.save(rooms);

@@ -17,27 +17,25 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@Table (name="Hotels")
+@Table(name = "hotels")
 @NoArgsConstructor
-public class Hotels implements  Serializable{
+public class Hotels implements Serializable {
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private long idHotel;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long idHotel; 
+
     private String name;
-    private String address;    
+    private String address;
     private String services;
     private String phoneNumber;
     private String email;
 
-    @Column(name ="star")
+    @Column(name = "star")
     private star star;
-
-    @OneToMany(mappedBy = "id_rooms")
+    @OneToMany(mappedBy = "hotel") 
     private List<Rooms> rooms;
 
-    @OneToMany(mappedBy = "idReservation")
-    private List<Reservations> reservations;
-
-
+    @OneToMany(mappedBy = "hotel") 
+    private List<Events> events;
 }

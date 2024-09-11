@@ -27,11 +27,12 @@ public class Events implements Serializable{
 
     
     @ManyToOne
-    @JoinColumn(name = "id_Hotel")
+    @JoinColumn(name = "id",referencedColumnName = "id")
     private Hotels hotel;
 
+
     @ManyToOne
-    @JoinColumn (name = "iduser")
+    @JoinColumn (name = "id_user",referencedColumnName = "id_user")
     private Users user;
     
 }
