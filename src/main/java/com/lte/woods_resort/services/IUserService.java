@@ -12,4 +12,6 @@ public interface IUserService {
     public Users saveUsers(Users users);
 
     public void deleteUsers(Users users);
+
+    public Users login(String email);
 }
