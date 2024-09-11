@@ -74,6 +74,11 @@
             <artifactId>hibernate-core</artifactId>
             <version>6.5.2.Final</version>
         </dependency>
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.10.2</version>
+        </dependency>
     </dependencies>
 
     <build>
