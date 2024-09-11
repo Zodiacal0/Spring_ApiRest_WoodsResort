@@ -19,7 +19,7 @@ public class UserService implements IUserService{
     }
 
     @Override
-    public Users chooUsers(String email) {
+    public Users chooseUsers(String email) {
         return userRepository.findByEmail(email);
     }
 
