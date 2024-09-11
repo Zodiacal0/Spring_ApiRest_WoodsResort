@@ -2,6 +2,8 @@ package com.lte.woods_resort.models;
 import java.io.Serializable;
 import java.util.List;
 
+import com.lte.woods_resort.DTOs.AuthUser;
+import com.lte.woods_resort.utils.PasswordEncrypt;
 import com.lte.woods_resort.utils.TypeOfUsers;
 
 import jakarta.persistence.Column;
@@ -45,5 +47,13 @@ public class Users  implements Serializable{
 
     @OneToMany(mappedBy = "user") 
     private List<Events> events;
+
+    public Users(AuthUser userDTO){
+        this.email = userDTO.getEmail();
+        this.userName = userDTO.getUserName();
+        this.password = PasswordEncrypt.encryptPassword(userDTO.getPassword());
+        this.name = userDTO.getName();
+        this.lastName = userDTO.getLastName();
+    }
 
 }

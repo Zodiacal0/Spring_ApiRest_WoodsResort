@@ -34,5 +34,9 @@ public class UserService implements IUserService{
         userRepository.delete(users);
     }
 
+    @Override
+    public Users login(String email){
+        return userRepository.findByEmail(email);
+    }
     
 }
