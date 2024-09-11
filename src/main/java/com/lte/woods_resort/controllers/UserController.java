@@ -42,7 +42,7 @@ public class UserController implements Serializable {
 
     @GetMapping("/choose-users/{id}")
     public ResponseEntity<Users> chooseUser(@PathVariable String iduser){
-        Users users = iUserService.chooUsers(iduser);
+        Users users = iUserService.chooseUsers(iduser);
         if(users == null)
             throw new UserException("no se encontro el usuario");
         return ResponseEntity.ok(users);
@@ -50,7 +50,7 @@ public class UserController implements Serializable {
 
     @PutMapping("/edit-users/{id}")
     public ResponseEntity<Users> editUser(@PathVariable String iduser, @RequestBody Users editUsers) {
-        Users users = iUserService.chooUsers(iduser);
+        Users users = iUserService.chooseUsers(iduser);
         if (users == null)
             throw new UserException("El id no existe");
             users.setPhone(editUsers.getPhone());
@@ -58,6 +58,7 @@ public class UserController implements Serializable {
             users.setLastName(editUsers.getLastName());
             users.setEmail(editUsers.getEmail());
             users.setUserName(editUsers.getUserName());
+            users.setPassword(editUsers.getPassword());
         iUserService.saveUsers(users);
         return ResponseEntity.ok(users);
     }

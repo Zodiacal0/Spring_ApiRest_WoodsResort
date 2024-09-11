@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @Data
 @Table(name = "users")
 public class Users  implements Serializable{
+
     @Id
     @Column(name="id_user")
         private String iduser;
@@ -25,6 +26,9 @@ public class Users  implements Serializable{
     @Email(message ="Please enter an Email")
     @Column(unique = true)
     private String email;
+
+    @Column(name = "password")
+    private String password;
 
     @Column(unique = true)
     private String userName; 
