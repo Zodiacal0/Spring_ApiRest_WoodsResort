@@ -75,10 +75,10 @@
             <version>6.5.2.Final</version>
         </dependency>
         <dependency>
-			    <groupId>com.cloudinary</groupId>
-			    <artifactId>cloudinary-http44</artifactId>
-			    <version>1.33.0</version>
-		    </dependency>
+            <groupId>com.cloudinary</groupId>
+            <artifactId>cloudinary</artifactId>
+            <version>1.39.0</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
