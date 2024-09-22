@@ -39,8 +39,8 @@ public class HotelController {
 
     @GetMapping("/search-Hotel/{id}")
 
-    public ResponseEntity<Hotels> searchHotels(@PathVariable Long idHotel) {
-        this.hotel = hotelsService.searchHotels(idHotel);
+    public ResponseEntity<Hotels> searchHotels(@PathVariable Long id) {
+        this.hotel = hotelsService.searchHotels(id);
         if (this.hotel == null)
             throw new HotelsExceptions("the hotel was not found");
         return ResponseEntity.ok(this.hotel);
@@ -54,8 +54,8 @@ public class HotelController {
     }
 
     @PutMapping("/edit-Hotels/{id}")
-    public ResponseEntity<Hotels> editHotels(@PathVariable Long idHotel, @RequestBody Hotels hotels) {
-        this.hotel = hotelsService.searchHotels(idHotel);
+    public ResponseEntity<Hotels> editHotels(@PathVariable Long id, @RequestBody Hotels hotels) {
+        this.hotel = hotelsService.searchHotels(id);
         if (this.hotel == null)
             throw new HotelsExceptions("the hotel was not found");
         this.hotel.setName(hotels.getName());

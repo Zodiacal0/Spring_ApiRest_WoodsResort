@@ -33,6 +33,7 @@ public class Hotels implements Serializable {
 
     @Column(name = "star")
     private star star;
+    
     @OneToMany(mappedBy = "hotel") 
     private List<Rooms> rooms;
 
