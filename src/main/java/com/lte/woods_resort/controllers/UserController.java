@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lte.woods_resort.exceptions.UserException;
 import com.lte.woods_resort.models.Users;
 import com.lte.woods_resort.services.IUserService;
+import com.lte.woods_resort.utils.PasswordEncrypt;
 
 @RestController
 @RequestMapping("wdr/v1/User")
@@ -28,41 +29,52 @@ public class UserController implements Serializable {
     private IUserService iUserService;
 
     @GetMapping("/list-user")
-    public List<Users> listUsers(){
-        var user = iUserService.listUsers();
-        user.forEach((user2 -> logger.info(user.toString())));
-        return user;
+    public List<Users> listUsers() {
+        var users = iUserService.listUsers();
+        users.forEach(user -> logger.info(user.toString()));
+        return users;
     }
 
     @PostMapping("add-user")
     public Users addUsers(@RequestBody Users users) {
-        logger.info("Usuario agregado");
+        
+        // Cifrar la contraseña antes de guardar
+        String encryptedPassword = PasswordEncrypt.encryptPassword(users.getPassword());
+        users.setPassword(encryptedPassword);
+
+        logger.info("Usuario agregado: {}", users.getUserName());
         return iUserService.saveUsers(users);
     }
 
     @GetMapping("/choose-users/{email}")
-    public ResponseEntity<Users> chooseUser(@PathVariable("id") String email){
-        Users users = iUserService.chooseUsers(email);
-        if(users == null)
-            throw new UserException("no se encontro el usuario");
-        return ResponseEntity.ok(users);
+    public ResponseEntity<Users> chooseUser(@PathVariable("email") String email) {
+        Users user = iUserService.chooseUsers(email);
+        if (user == null) {
+            throw new UserException("No se encontró el usuario");
+        }
+        return ResponseEntity.ok(user);
     }
 
     @PutMapping("/edit-users/{email}")
     public ResponseEntity<Users> editUser(@PathVariable("email") String email, @RequestBody Users editUsers) {
-        Users users = iUserService.chooseUsers(email);
-        if (users == null) {
+        Users user = iUserService.chooseUsers(email);
+        if (user == null) {
             throw new UserException("El id no existe");
         }
-        users.setPhone(editUsers.getPhone());
-        users.setName(editUsers.getName());
-        users.setLastName(editUsers.getLastName());
-        users.setEmail(editUsers.getEmail());
-        users.setUserName(editUsers.getUserName());
-        users.setPassword(editUsers.getPassword());
-        
-        iUserService.saveUsers(users);
-        return ResponseEntity.ok(users);
+
+        user.setPhone(editUsers.getPhone());
+        user.setName(editUsers.getName());
+        user.setLastName(editUsers.getLastName());
+        user.setEmail(editUsers.getEmail());
+        user.setUserName(editUsers.getUserName());
+
+        // Cifrar la nueva contraseña solo si se está cambiando
+        if (editUsers.getPassword() != null && !editUsers.getPassword().isEmpty()) {
+            String encryptedPassword = PasswordEncrypt.encryptPassword(editUsers.getPassword());
+            user.setPassword(encryptedPassword);
+        }
+
+        iUserService.saveUsers(user);
+        return ResponseEntity.ok(user);
     }
-    
 }
