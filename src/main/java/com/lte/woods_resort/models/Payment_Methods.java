@@ -3,7 +3,6 @@ package com.lte.woods_resort.models;
 import java.io.Serializable;
 
 import com.lte.woods_resort.utils.TypeOfPaymentMethods;
-import com.lte.woods_resort.services.EncryptService;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -27,13 +26,4 @@ public class Payment_Methods implements Serializable {
 
     @Column(name = "password_payment_methods")
     private String encryptedPassword;
-
-    public void setPasswordPaymentMethods(String password) {
-        this.encryptedPassword = EncryptService.encriptar(password);
-    }
-
-    public String getPasswordPaymentMethods() {
-        return EncryptService.desencriptar(this.encryptedPassword);
-    }
-
 }
