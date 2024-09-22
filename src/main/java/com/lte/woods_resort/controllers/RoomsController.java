@@ -15,7 +15,6 @@ import com.lte.woods_resort.exceptions.RoomsException;
 import com.lte.woods_resort.models.Rooms;
 import com.lte.woods_resort.services.IRoomsService;
 
-import lombok.var;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +38,11 @@ public class RoomsController {
 
     @GetMapping("/list-rooms")
     public List<Rooms> listRooms() {
-        var rooms = iRoomsService.listRooms();
-        rooms.forEach((rooms2 -> logger.info(rooms.toString())));
+        List<Rooms> rooms = iRoomsService.listRooms();
+        rooms.forEach(room -> logger.info(room.toString()));
         return rooms;
     }
+
     
     @PostMapping("/add-rooms")
     public Rooms addRooms(@RequestBody Rooms rooms) {
