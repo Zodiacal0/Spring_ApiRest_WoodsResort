@@ -1,12 +1,15 @@
 package com.lte.woods_resort.controllers;
 
 import java.io.Serializable;
+import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,19 +40,15 @@ public class UserController implements Serializable {
     }
 
     @PostMapping("add-user")
-    public String addUsers(@RequestBody Users users) {
-    
+    public Users addUsers(@RequestBody Users users) {
+
         String encryptedPassword = PasswordEncrypt.encryptPassword(users.getPassword());
         users.setPassword(encryptedPassword);
-
-        logger.info("Usuario agregado: {}", users.getUserName());
-        
         Users savedUser = iUserService.saveUsers(users);
 
-        String mesagge = "User Created Successfully";
-
-        return mesagge; 
+        return savedUser;
     }
+
 
 
 
