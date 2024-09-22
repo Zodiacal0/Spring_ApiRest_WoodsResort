@@ -31,9 +31,16 @@ public class CloudinaryService {
         String fileName = newName + "_" + timestamp;
 
         @SuppressWarnings( "unchecked")
-        Map<String, Object> uploadResult = (Map<String, Object>)cloudinary.uploader().upload(file.getBytes(), ObjectUtils.asMap(
+        Map<String, Object> uploadResult = (Map<String, Object>)
+        cloudinary.uploader().upload(file.getBytes(), ObjectUtils.asMap(
             "folder", folder,
             "public_id", fileName
+            /*
+             * Map<String, Object> uploadResult = new HashMap<>();
+             * uploadResult.put("folder", folder);
+             * uploadResult.put("public_id", fileName);
+             * Map<String, Object> uploadResult = (Map<String, Object>) cloudinary.uploader().upload(file.getBytes(), uploadResult);
+             */
         ));
 
         return uploadResult;
