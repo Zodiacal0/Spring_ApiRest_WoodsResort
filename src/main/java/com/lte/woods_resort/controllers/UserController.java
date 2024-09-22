@@ -1,6 +1,7 @@
 package com.lte.woods_resort.controllers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -36,19 +37,20 @@ public class UserController implements Serializable {
     }
 
     @PostMapping("add-user")
-    public Users addUsers(@RequestBody Users users) {
-        String originalPassword = users.getPassword();
-        
-        // Cifrar la contraseña antes de guardar
-        String encryptedPassword = PasswordEncrypt.encryptPassword(originalPassword);
+    public String addUsers(@RequestBody Users users) {
+    
+        String encryptedPassword = PasswordEncrypt.encryptPassword(users.getPassword());
         users.setPassword(encryptedPassword);
 
         logger.info("Usuario agregado: {}", users.getUserName());
-        Users savedUser = iUserService.saveUsers(users);
-        savedUser.setPassword(originalPassword); 
         
-        return savedUser;
+        Users savedUser = iUserService.saveUsers(users);
+
+        String mesagge = "User Created Successfully";
+
+        return mesagge; 
     }
+
 
 
     @GetMapping("/choose-users/{email}")
