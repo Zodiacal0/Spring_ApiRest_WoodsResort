@@ -47,8 +47,22 @@ public class AuthUserController {
         }
 
         try {
-            Users existingUser = iUserService.login(user.getEmail());
-            if (existingUser == null || !PasswordEncrypt.verifyPassword(user.getPassword(), existingUser.getPassword())) {
+            Users existingUser = iUserService.login(user.getUserName());
+            if (existingUser == null) {
+                res.put("message", "User not found");
+                return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
+            }
+
+            // Log para verificar usuario
+            logger.info("user entered: {}", user.getUserName());
+            logger.info("user in DB: {}", existingUser.getUserName());
+            // Log para verificar la contraseña
+            logger.info("Password entered: {}", user.getPassword());
+            logger.info("Password in DB: {}", existingUser.getPassword());
+
+            // Verifica la contraseña
+            boolean isPasswordValid = PasswordEncrypt.verifyPassword(user.getPassword(), existingUser.getPassword());
+            if (!isPasswordValid) {
                 res.put("message", "User or password is wrong");
                 return new ResponseEntity<>(res, HttpStatus.UNAUTHORIZED);
             }
@@ -58,9 +72,13 @@ public class AuthUserController {
             return new ResponseEntity<>(res, HttpStatus.OK); 
         } catch (DataAccessException e) {
             logger.error("Error al conectar a la base de datos", e);
-            res.put("Mensaje", "Error conectar a la base de datos");
+            res.put("Mensaje", "Error al conectar a la base de datos");
             res.put("Error", e.getMessage());
             return new ResponseEntity<>(res, HttpStatus.SERVICE_UNAVAILABLE);
+        } catch (Exception e) {
+            logger.error("Error inesperado", e);
+            res.put("Mensaje", "Error inesperado");
+            return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
