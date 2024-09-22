@@ -27,7 +27,7 @@ public class UserController implements Serializable {
     @Autowired
     private IUserService iUserService;
 
-     @GetMapping("/list-user")
+    @GetMapping("/list-user")
     public List<Users> listUsers(){
         var user = iUserService.listUsers();
         user.forEach((user2 -> logger.info(user.toString())));
@@ -40,25 +40,27 @@ public class UserController implements Serializable {
         return iUserService.saveUsers(users);
     }
 
-    @GetMapping("/choose-users/{id}")
-    public ResponseEntity<Users> chooseUser(@PathVariable String iduser){
-        Users users = iUserService.chooseUsers(iduser);
+    @GetMapping("/choose-users/{email}")
+    public ResponseEntity<Users> chooseUser(@PathVariable("id") String email){
+        Users users = iUserService.chooseUsers(email);
         if(users == null)
             throw new UserException("no se encontro el usuario");
         return ResponseEntity.ok(users);
     }
 
-    @PutMapping("/edit-users/{id}")
-    public ResponseEntity<Users> editUser(@PathVariable String iduser, @RequestBody Users editUsers) {
-        Users users = iUserService.chooseUsers(iduser);
-        if (users == null)
+    @PutMapping("/edit-users/{email}")
+    public ResponseEntity<Users> editUser(@PathVariable("email") String email, @RequestBody Users editUsers) {
+        Users users = iUserService.chooseUsers(email);
+        if (users == null) {
             throw new UserException("El id no existe");
-            users.setPhone(editUsers.getPhone());
-            users.setName(editUsers.getName());
-            users.setLastName(editUsers.getLastName());
-            users.setEmail(editUsers.getEmail());
-            users.setUserName(editUsers.getUserName());
-            users.setPassword(editUsers.getPassword());
+        }
+        users.setPhone(editUsers.getPhone());
+        users.setName(editUsers.getName());
+        users.setLastName(editUsers.getLastName());
+        users.setEmail(editUsers.getEmail());
+        users.setUserName(editUsers.getUserName());
+        users.setPassword(editUsers.getPassword());
+        
         iUserService.saveUsers(users);
         return ResponseEntity.ok(users);
     }
