@@ -18,6 +18,7 @@ import com.lte.woods_resort.services.IRoomsService;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -45,13 +46,14 @@ public class RoomsController {
 
     
     @PostMapping("/add-rooms")
-    public Rooms addRooms(@RequestBody Rooms rooms) {
-        logger.info("room created");    
+    public Rooms addRooms(@ModelAttribute Rooms rooms) {
+        logger.info("Room created: " + rooms);
         return iRoomsService.saveRooms(rooms);
     }
 
+
     @GetMapping("/search-rooms/{id}")
-    public ResponseEntity<Rooms> searchRooms(@RequestParam String id_rooms) {
+    public ResponseEntity<Rooms> searchRooms(@RequestParam Long id_rooms) {
         Rooms rooms = iRoomsService.findRooms(id_rooms);
         if (rooms == null) {
             throw new RoomsException("this room not exist");
@@ -60,7 +62,7 @@ public class RoomsController {
     }
 
     @PutMapping("/update-room/{id}")
-    public ResponseEntity<Rooms> updateRoom(@PathVariable String id_rooms, @RequestBody Rooms roomsEdit) {
+    public ResponseEntity<Rooms> updateRoom(@PathVariable Long id_rooms, @RequestBody Rooms roomsEdit) {
         Rooms room = iRoomsService.findRooms(id_rooms);
         if(room == null){
             throw new RoomsException("this id not exist");
@@ -80,7 +82,7 @@ public class RoomsController {
     }
 
     @DeleteMapping("delete-rooms/{id}")
-    public ResponseEntity <Map<String, Boolean>> deleteRoom(@PathVariable String id_rooms){
+    public ResponseEntity <Map<String, Boolean>> deleteRoom(@PathVariable Long id_rooms){
         Rooms rooms = iRoomsService.findRooms(id_rooms);
         if (rooms == null) {
             throw new RoomsException("this id not exist");

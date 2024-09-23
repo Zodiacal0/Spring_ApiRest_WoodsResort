@@ -1,7 +1,6 @@
 package com.lte.woods_resort.models;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -38,9 +37,9 @@ public class Reservations implements Serializable {
     @ManyToOne
     private Users id_user;
 
-    @OneToMany(mappedBy = "reservation")
     @JsonIgnore
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
+    @OneToMany(mappedBy = "reservation")
     private List<Rooms> rooms;
 
 }

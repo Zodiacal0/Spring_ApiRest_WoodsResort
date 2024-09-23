@@ -38,7 +38,9 @@ public class Hotels implements Serializable {
     @Column(name = "star")
     @Enumerated(EnumType.STRING)
     private StarRating star;
-    
+
+    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @OneToMany(mappedBy = "hotel") 
     private List<Rooms> rooms;
 
