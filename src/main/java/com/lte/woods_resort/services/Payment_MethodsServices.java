@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.lte.woods_resort.models.Payment_Methods;
 import com.lte.woods_resort.repository.PaymentMethodsRepository;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class Payment_MethodsServices implements IPayment_MethodsService {
 
@@ -19,13 +21,11 @@ public class Payment_MethodsServices implements IPayment_MethodsService {
     }
 
     @Override
-    public Payment_Methods choosePayment_Methods(String idPaymentMethods) {
-        //return pmRepository.findById(idPaymentMethods).orElse(null);
-        //Tarea tarea = tareaRepositorio.findById(idTarea).orElse(null);
-        Payment_Methods payM = pmRepository.findById(idPaymentMethods).orElse(null);
-        return payM;
-        
+    public Payment_Methods choosePayment_Methods(Long idPaymentMethods) {
+    return pmRepository.findById(idPaymentMethods)
+        .orElseThrow(() -> new EntityNotFoundException("Payment Method not found with id: " + idPaymentMethods));
     }
+
 
     @Override
     public  Payment_Methods savePayment_Methods(Payment_Methods payment_Methods) {

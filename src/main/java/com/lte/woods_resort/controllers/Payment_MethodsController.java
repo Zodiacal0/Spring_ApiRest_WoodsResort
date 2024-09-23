@@ -20,9 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lte.woods_resort.exceptions.Payment_MethodsException;
 import com.lte.woods_resort.models.Payment_Methods;
 import com.lte.woods_resort.services.IPayment_MethodsService;
+
 @RestController
 @RequestMapping("wdr/v1/Payment_Methods")
-
 public class Payment_MethodsController {
     private static final Logger logger = LoggerFactory.getLogger(Payment_MethodsController.class);
 
@@ -43,7 +43,7 @@ public class Payment_MethodsController {
     }
 
     @GetMapping("/choose-payM/{id}")
-    public ResponseEntity<Payment_Methods> chooserPaymentMethod(@PathVariable String idPaymentMethods){
+    public ResponseEntity<Payment_Methods> chooserPaymentMethod(@PathVariable Long idPaymentMethods){
         Payment_Methods pyM = iPayment_MethodsService.choosePayment_Methods(idPaymentMethods);
         if(pyM == null)
             throw new Payment_MethodsException("no se encontro el metodo de pago");
@@ -51,7 +51,7 @@ public class Payment_MethodsController {
     }
 
     @PutMapping("/edit-payM/{id}")
-    public ResponseEntity<Payment_Methods> edtiPaymentMethod(@PathVariable String idPaymentMethods, 
+    public ResponseEntity<Payment_Methods> edtiPaymentMethod(@PathVariable Long idPaymentMethods, 
     @RequestBody Payment_Methods editPayment_Methods) {
         Payment_Methods pyM = iPayment_MethodsService.choosePayment_Methods(idPaymentMethods);
         if (pyM == null)
@@ -62,7 +62,7 @@ public class Payment_MethodsController {
     }
     
     @DeleteMapping("/delete-payM/{id}")
-    public ResponseEntity <Map<String, Boolean>> eliminatPaymentMethods(@PathVariable String idPaymentMethods){
+    public ResponseEntity <Map<String, Boolean>> eliminatPaymentMethods(@PathVariable Long idPaymentMethods){
         Payment_Methods pyM = iPayment_MethodsService.choosePayment_Methods(idPaymentMethods);
         if (pyM == null)
             throw new Payment_MethodsException("El id no existe");
