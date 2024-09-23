@@ -27,7 +27,7 @@ public class Events implements Serializable{
 
     
     @ManyToOne
-    @JoinColumn(name = "id",referencedColumnName = "id")
+    @JoinColumn(name = "id_hotel",referencedColumnName = "id_hotel")
     private Hotels hotel;
 
 

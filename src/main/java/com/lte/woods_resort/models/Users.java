@@ -2,12 +2,18 @@ package com.lte.woods_resort.models;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lte.woods_resort.DTOs.AuthUser;
 import com.lte.woods_resort.utils.PasswordEncrypt;
 import com.lte.woods_resort.utils.TypeOfUsers;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -22,8 +28,9 @@ import lombok.NoArgsConstructor;
 public class Users  implements Serializable{
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_user")
-        private String iduser;
+    private Long idUser;
 
     @Email(message ="Please enter an Email")
     @Column(unique = true)
@@ -43,8 +50,11 @@ public class Users  implements Serializable{
     private String phone;
 
     @Column(name="user_type")
+    @Enumerated(EnumType.STRING)
     private TypeOfUsers typeUsers;
 
+    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @OneToMany(mappedBy = "user") 
     private List<Events> events;
 
