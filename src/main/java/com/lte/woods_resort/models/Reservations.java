@@ -24,10 +24,10 @@ public class Reservations implements Serializable {
     private Long idReservation;
 
     @Column(name = "star_date")
-    private Date starDate;
+    private String starDate;
 
     @Column(name = "end_date")
-    private Date endDate;
+    private String endDate;
 
     @JoinColumn(name = "id_user", referencedColumnName = "id_user")
     @ManyToOne

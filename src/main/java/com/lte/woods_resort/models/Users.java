@@ -2,6 +2,7 @@ package com.lte.woods_resort.models;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.lte.woods_resort.DTOs.AuthUser;
@@ -12,6 +13,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,18 +23,19 @@ import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "users")
-public class Users  implements Serializable{
+public class Users implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_user")
+    @Column(name = "id_user")
+    @JsonBackReference
     private Long idUser;
 
-    @Email(message ="Please enter an Email")
+    @Email(message = "Please enter an Email")
     @Column(unique = true)
     private String email;
 
@@ -41,24 +44,24 @@ public class Users  implements Serializable{
 
     @Column(unique = true)
     private String userName; 
-        
+
     private String name;
     
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
 
     private String phone;
 
-    @Column(name="user_type")
+    @Column(name = "user_type")
     @Enumerated(EnumType.STRING)
     private TypeOfUsers typeUsers;
 
     @JsonIgnore
-    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
-    @OneToMany(mappedBy = "user") 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY) 
     private List<Events> events;
 
-    public Users(AuthUser userDTO){
+    public Users(AuthUser userDTO) {
         this.email = userDTO.getEmail();
         this.userName = userDTO.getUserName();
         this.password = PasswordEncrypt.encryptPassword(userDTO.getPassword());
@@ -66,4 +69,17 @@ public class Users  implements Serializable{
         this.lastName = userDTO.getLastName();
     }
 
+    @Override
+    public String toString() {
+        return "Users{" +
+            "idUser=" + idUser +
+            ", email='" + email + '\'' +
+            ", userName='" + userName + '\'' +
+            ", name='" + name + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", phone='" + phone + '\'' +
+            ", typeUsers=" + typeUsers +
+            '}';
+    }
 }
+
