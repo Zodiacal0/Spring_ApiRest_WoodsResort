@@ -30,7 +30,7 @@ public class Rooms implements Serializable {
     private String state;
 
     @ManyToOne
-    @JoinColumn(name = "id_hotel", referencedColumnName = "id")  
+    @JoinColumn(name = "id_hotel", referencedColumnName = "id_hotel")  
     private Hotels hotel; 
 
     @ManyToOne

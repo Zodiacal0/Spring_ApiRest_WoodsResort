@@ -37,14 +37,16 @@ public class UserController implements Serializable {
 
     @PostMapping("add-user")
     public Users addUsers(@RequestBody Users users) {
-        
-        // Cifrar la contraseña antes de guardar
+
         String encryptedPassword = PasswordEncrypt.encryptPassword(users.getPassword());
         users.setPassword(encryptedPassword);
+        Users savedUser = iUserService.saveUsers(users);
 
-        logger.info("Usuario agregado: {}", users.getUserName());
-        return iUserService.saveUsers(users);
+        return savedUser;
     }
+
+
+
 
     @GetMapping("/choose-users/{email}")
     public ResponseEntity<Users> chooseUser(@PathVariable("email") String email) {

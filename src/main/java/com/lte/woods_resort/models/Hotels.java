@@ -3,10 +3,14 @@ package com.lte.woods_resort.models;
 import java.io.Serializable;
 import java.util.List;
 
-import com.lte.woods_resort.utils.star;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.lte.woods_resort.utils.StarRating;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -21,7 +25,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Hotels implements Serializable {
     @Id
-    @Column(name = "id")
+    @Column(name = "id_hotel")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idHotel; 
 
@@ -32,10 +36,14 @@ public class Hotels implements Serializable {
     private String email;
 
     @Column(name = "star")
-    private star star;
+    @Enumerated(EnumType.STRING)
+    private StarRating star;
+    
     @OneToMany(mappedBy = "hotel") 
     private List<Rooms> rooms;
 
+    @JsonIgnore
+    @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @OneToMany(mappedBy = "hotel") 
     private List<Events> events;
 }
