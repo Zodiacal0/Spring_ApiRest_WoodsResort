@@ -24,10 +24,10 @@ public class Payments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idPago;
 
-    private int amount;
+    private double amount;
 
     @Column(name = "payment_date")
-    private Date paymentDate;
+    private String paymentDate;
 
     @OneToOne
     @JoinColumn(name = "id_reservation", referencedColumnName = "id_reservation")
