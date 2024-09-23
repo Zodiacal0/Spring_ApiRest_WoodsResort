@@ -1,8 +1,6 @@
 package com.lte.woods_resort.models;
 
 import java.io.Serializable;
-import java.sql.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,7 +21,7 @@ public class Events implements Serializable{
     private Long id_event;
     private String name_event;
     private String event_description;
-    private Date date;
+    private String date;
 
     
     @ManyToOne
