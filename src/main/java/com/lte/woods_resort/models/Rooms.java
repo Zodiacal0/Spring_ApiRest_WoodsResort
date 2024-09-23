@@ -4,6 +4,8 @@ import java.io.Serializable;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -14,9 +16,11 @@ import lombok.Data;
 @Data
 @Table(name = "rooms")
 public class Rooms implements Serializable {
+    
     @Id
     @Column(name = "id_rooms")
-    private String idRooms;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idRooms;
 
     @Column(unique = true, name = "number")
     private int number;

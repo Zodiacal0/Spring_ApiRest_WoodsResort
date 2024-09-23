@@ -21,7 +21,7 @@ public class RoomsService implements IRoomsService {
     }
 
     @Override
-    public Rooms findRooms(String id_rooms) {
+    public Rooms findRooms(Long id_rooms) {
         Rooms rooms = roomsRespository.findById(id_rooms).orElse(null);
         return rooms;
     }
