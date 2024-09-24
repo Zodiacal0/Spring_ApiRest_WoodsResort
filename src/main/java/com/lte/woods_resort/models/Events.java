@@ -33,6 +33,7 @@ public class Events implements Serializable{
     @JoinColumn (name = "id_user",referencedColumnName = "id_user")
     private Users user;
     
+    
     @Override
     public String toString() {
         return "Events{" +

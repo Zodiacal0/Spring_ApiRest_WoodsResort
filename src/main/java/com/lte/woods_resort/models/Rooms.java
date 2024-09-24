@@ -41,6 +41,7 @@ public class Rooms implements Serializable {
     @JoinColumn(name = "id_reservation", referencedColumnName = "id_reservation")
     private Reservations reservation;
 
+    
     @Override
     public String toString() {
         return "Rooms{" +

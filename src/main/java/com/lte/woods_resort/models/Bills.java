@@ -36,6 +36,7 @@ public class Bills {
     @JoinColumn(name = "id_user")
     private Users user;
 
+    
     @Override
     public String toString() {
         return "Bills{" +

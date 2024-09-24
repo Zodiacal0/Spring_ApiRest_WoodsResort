@@ -49,6 +49,7 @@ public class Hotels implements Serializable {
     @OneToMany(mappedBy = "hotel") 
     private List<Events> events;
 
+    
     @Override
     public String toString() {
         return "Hotels{" +

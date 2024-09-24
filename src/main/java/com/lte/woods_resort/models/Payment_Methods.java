@@ -30,6 +30,7 @@ public class Payment_Methods implements Serializable {
     @Enumerated(EnumType.STRING)
     private TypeOfPaymentMethods typeOfPaymentMethods;
 
+    
     @Override
     public String toString() {
         return "Payment_Methods{" +
