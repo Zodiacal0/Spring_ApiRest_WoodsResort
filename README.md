@@ -8,11 +8,11 @@
 
 #### 👥 |Metodologia Scrum
 
-● Para la realizacion de este proyecto se implemnto la Metodologia Scrum que permitio la rapida realizacion del proyecto.
+● Para la realización de este proyecto se implemnto la Metodología Scrum que permitió la rápida realización del proyecto.
 
 #### 🔗 |EndPoints
-● Aprendimos el correcto uso de los EndPoints junto a su uso mediante los metodos HTTP necesarios.
+● Aprendimos el correcto uso de los EndPoints junto a su uso mediante los métodos HTTP necesarios.
 
 #### ⚙️ |MicroServicios
 
- Implementacion de micro servicios para la optimizacion del codigo, dejando de lado una modalidad monolitica.
+ Implementación de micro servicios para la optimización del código, dejando de lado una modalidad monolítica.
