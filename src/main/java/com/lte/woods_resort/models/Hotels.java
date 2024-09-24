@@ -48,4 +48,19 @@ public class Hotels implements Serializable {
     @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
     @OneToMany(mappedBy = "hotel") 
     private List<Events> events;
+
+    
+    @Override
+    public String toString() {
+        return "Hotels{" +
+                "idHotel=" + idHotel +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", services='" + services + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", star=" + (star != null ? star.name() : "null") +
+                '}';
+    }
+
 }
