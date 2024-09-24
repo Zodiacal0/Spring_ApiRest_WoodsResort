@@ -67,16 +67,4 @@ public class HotelController {
         return ResponseEntity.ok(this.hotel);
     }
 
-    @DeleteMapping("/delete-Hotels/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteHotels(@PathVariable Long idHotel) {
-        this.hotel = hotelsService.searchHotels(idHotel);
-        if (this.hotel == null)
-            throw new HotelsExceptions("the hotel was not found");
-        hotelsService.removeHotels(this.hotel);
-
-        Map<String, Boolean> confirmation = new HashMap<>();
-        confirmation.put("hotel removed successfully", true);
-        return ResponseEntity.ok(confirmation);
-    }
-
 }

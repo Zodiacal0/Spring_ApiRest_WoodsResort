@@ -29,4 +29,12 @@ public class Payment_Methods implements Serializable {
     @Column(name = "type_of_payment_methods")
     @Enumerated(EnumType.STRING)
     private TypeOfPaymentMethods typeOfPaymentMethods;
+
+    @Override
+    public String toString() {
+        return "Payment_Methods{" +
+                "idPaymentMethods=" + idPaymentMethods +
+                ", typeOfPaymentMethods=" + (typeOfPaymentMethods != null ? typeOfPaymentMethods.name() : "null") +
+                '}';
+    }
 }

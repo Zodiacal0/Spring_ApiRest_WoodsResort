@@ -42,4 +42,15 @@ public class Reservations implements Serializable {
     @OneToMany(mappedBy = "reservation")
     private List<Rooms> rooms;
 
+    @Override
+    public String toString() {
+        return "Reservations{" +
+                "idReservation=" + idReservation +
+                ", starDate='" + starDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", id_user=" + (id_user != null ? id_user.getIdUser() : "null") +
+                ", rooms=" + (rooms != null ? rooms.size() : 0) +
+                '}';
+    }
+
 }

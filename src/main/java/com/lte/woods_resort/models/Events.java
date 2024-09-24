@@ -33,4 +33,16 @@ public class Events implements Serializable{
     @JoinColumn (name = "id_user",referencedColumnName = "id_user")
     private Users user;
     
+    @Override
+    public String toString() {
+        return "Events{" +
+                "id_event=" + id_event +
+                ", name_event='" + name_event + '\'' +
+                ", event_description='" + event_description + '\'' +
+                ", date='" + date + '\'' +
+                ", hotel=" + (hotel != null ? hotel.getIdHotel() : "null") +
+                ", user=" + (user != null ? user.getIdUser() : "null") +
+                '}';
+    }
+
 }

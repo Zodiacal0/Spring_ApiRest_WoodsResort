@@ -36,4 +36,15 @@ public class Bills {
     @JoinColumn(name = "id_user")
     private Users user;
 
+    @Override
+    public String toString() {
+        return "Bills{" +
+                "idInvoice=" + idInvoice +
+                ", numeroFactura=" + numeroFactura +
+                ", issueDate=" + issueDate +
+                ", payment=" + (payment != null ? payment.getIdPago() : "null") +
+                ", user=" + (user != null ? user.getIdUser() : "null") +
+                '}';
+    }
+
 }

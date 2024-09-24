@@ -40,4 +40,20 @@ public class Rooms implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_reservation", referencedColumnName = "id_reservation")
     private Reservations reservation;
+
+    @Override
+    public String toString() {
+        return "Rooms{" +
+                "idRooms=" + idRooms +
+                ", number=" + number +
+                ", type='" + type + '\'' +
+                ", price=" + price +
+                ", capacity=" + capacity +
+                ", commodities='" + commodities + '\'' +
+                ", state='" + state + '\'' +
+                ", hotel=" + (hotel != null ? hotel.getIdHotel() : "null") +
+                ", reservation=" + (reservation != null ? reservation.getIdReservation() : "null") +
+                '}';
+    }
+
 }

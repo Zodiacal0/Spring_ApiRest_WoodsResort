@@ -44,4 +44,17 @@ public class Payments implements Serializable {
     @OneToOne(mappedBy = "payment")
     private Bills bill;
 
+    @Override
+    public String toString() {
+        return "Payments{" +
+                "idPago=" + idPago +
+                ", amount=" + amount +
+                ", paymentDate='" + paymentDate + '\'' +
+                ", reservation=" + (reservation != null ? reservation.getIdReservation() : "null") +
+                ", user=" + (user != null ? user.getIdUser() : "null") +
+                ", paymentMethod=" + (paymentMethod != null ? paymentMethod.getIdPaymentMethods() : "null") +
+                ", bill=" + (bill != null ? bill.getIdInvoice() : "null") +
+                '}';
+    }
+
 }
