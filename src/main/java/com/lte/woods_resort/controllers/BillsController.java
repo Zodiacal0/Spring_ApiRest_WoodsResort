@@ -11,6 +11,7 @@ import com.lte.woods_resort.exceptions.BillsExceptions;
 import com.lte.woods_resort.models.Bills;
 import com.lte.woods_resort.services.IBillsService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,7 +36,7 @@ public class BillsController {
     }
 
     @PostMapping("/bills")
-    public Bills addBills(@RequestBody Bills bills) {
+    public Bills addBills(@ModelAttribute Bills bills) {
         logger.info("invoice added");
         return ibBillsService.addBills(bills);
     }
